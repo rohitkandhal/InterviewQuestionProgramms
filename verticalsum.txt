@@ -1,0 +1,18 @@
+d = {}
+
+def traverse(node, hd):
+  if not node:
+    return
+  if not hd in d:
+    d[hd] = 0
+  d[hd] = d[hd] + node.value
+  traverse(node.left, hd - 1)
+  traverse(node.right, hd + 1)
+
+I think out a o(nlong(n)) solution for this problem. The idea is:
+
+(1) using preorder traversal to get the HD for every node, and store the HD and its associated node in an array.
+
+(2) sort the array by HD
+
+(3) traversal the sorted array to print result.

@@ -1,0 +1,36 @@
+bool is_bst(node * cur)
+{
+   if (cur == NULL)
+     return true;
+
+   // if calculated before cur vertex.
+   if (hash_set_bst[cur] != -1)
+      return hash_set_bst[cur];
+
+   int left_value = MIN;
+   int right_value = MAX;
+   if (cur -> left != NULL)
+      left_value = cur -> left -> value;
+   if (cur -> right != NULL)
+      right_value = cur -> right -> value;
+
+   if (cur -> value > left_value && cur -> value < right_value)
+   {
+      hash_set_bst[cur] = is_bst(cur->left) && is_bst(cur->right);
+      return hash_set_bst[cur];
+   }
+   else
+   {
+      hash_set_bst[cur] = 0;
+      is_bst(cur->left);
+      is_bst(cur->right);
+      return hash_set_bst[cur];
+   }
+}
+
+int dfs(node * cur)
+{
+   if (cur == NULL) return 0;
+   size[cur] = 1 + dfs(cur->left) + dfs(cur->right);
+   return size[cur];
+}

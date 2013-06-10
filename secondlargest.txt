@@ -1,0 +1,12 @@
+SecondLargest(Node root, Node secondLarge)
+{
+
+    if(root.right==null)
+        return root.left;
+
+    Node secondLargest = root;
+    while(secondLargest.right.right==null)
+        secondLargest=secondLargest.right;
+
+    return secondLargest;
+}

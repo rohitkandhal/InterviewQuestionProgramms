@@ -1,0 +1,14 @@
+public static int notRepeated(int[] given) {
+  Map<Integer> m = new HashMap<Integer>();
+  for(i=0; i < given.length; i++) {
+    if(m.get(given[i])) {
+      m.put(given[i], 2);
+    }
+    else
+      m.put(given[i], 1);
+    for(x:m) {
+      if(x == 1)
+        return x;
+    }
+  }
+}

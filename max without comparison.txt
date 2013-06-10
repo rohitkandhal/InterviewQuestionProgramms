@@ -1,0 +1,11 @@
+int getMax(int a, int b) {
+    int c = a - b;
+    int k = (c >> 31) & 0x1;
+    int max = a - k * c;
+    return max;
+}
+
+
+Return = A - I * (A - B)
+where I is 1 when A - B is negative i.e. B > A
+in that case return A - A + B = B

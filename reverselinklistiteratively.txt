@@ -1,0 +1,24 @@
+public class Node<E>
+{
+    Node<E> next;
+    E value;
+
+    public Node(E value, Node<E> next)
+    {
+        this.value = value;
+        this.next = next;
+    }
+
+    public Node<E> reverse()
+    {
+        Node<E> head = null;
+        Node<E> current = this;
+        while (current != null) {
+            Node<E> save = current;
+            current = current.next;
+            save.next = head;
+            head = save;
+        }
+        return head;
+    }
+}

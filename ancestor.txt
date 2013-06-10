@@ -1,0 +1,16 @@
+public Tree commonAncestor(Tree root,Node a,Node b)
+{
+   if(covers(root.left,a)&& covers(root.left,b))
+      returns commonAncestor(root.left,a,b);
+   if(covers(root.right,a)&& covers(root.right,b))
+      returns commonAncestor(root.right,a,b);
+    return root;
+}
+
+private boolean covers(Tree root,Node a)
+{
+	if(root==NULL)
+	if(root==a)return true;
+        return covers((root.left,a)||covers(root.right,a));    
+
+}

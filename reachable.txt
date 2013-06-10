@@ -1,0 +1,36 @@
+public enum State{
+Unvisited,Visiting,Visited;
+}
+
+public static boolean search(Graph G,Node start,Node end)
+{
+LinkedList<Node> q= new LinkedListNode<Node>();
+
+for(Node u:g.getNodes())
+{
+	u.state=State.unvisited;
+}
+
+start.state=State.visiting;
+q.add(start);
+Node u;
+while(!q.isEmpty())
+{
+   u.removeFirst();
+	if(u!=NULL)
+ 	{
+		for(Node v:u.getAdjacent())
+		{
+			if(v==end)
+				return true;
+			else
+				{v.state=v.visiting;q.add(v);}
+		}
+	}			
+      u.state=State.visited;
+
+}
+return false;
+
+
+}

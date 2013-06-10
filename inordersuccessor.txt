@@ -1,0 +1,22 @@
+public static Treenode inorderSuccessor(Treenode e)
+{
+  if(e!=null)
+   {
+     	Treenode p;
+	if(e.parent==NULL || e.right!=NULL)
+	 		p=leftMostChild(p);
+        else
+	{
+		while((p=e.parent)!=NULL)
+		{
+			if(e==p.left)
+			{break;}
+			e=p;
+		}
+		return p;
+	}
+	
+ 
+   }
+	return null;
+}

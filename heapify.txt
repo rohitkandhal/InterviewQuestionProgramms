@@ -1,0 +1,21 @@
+public static void heapM(int[] Arr, int i) {
+
+        int largest;
+        int left = i * 2+1;
+        int right = i * 2 + 2;
+        if (((left < Arr.length) && (Arr[left] > Arr[i]))) {
+            largest = left;
+        } else {
+            largest = i;
+        }
+
+        if (((right < Arr.length) && (Arr[right] > Arr[largest]))) {
+            largest = right;
+        }
+        if (largest != i) {
+            swap(i, largest);
+
+
+            heapM(Arr, largest);
+        }
+    }

@@ -1,0 +1,29 @@
+public static double Evaluating_postfix_expressions(String postfix) throws Exception{
+    StringTokenizer st = new StringTokenizer(postfix);
+    int numOF_tokens = st.countTokens();
+    for (int i = 1; i <= numOF_tokens; i++) {
+        Object term = st.nextToken();
+        try { // if it is an operand there is no problem
+            float x =  Float.parseFloat((String)term);
+            stack.push(x);
+        } catch (Exception e) { // it is an operator
+            float v1 = (float) stack.pop();
+            float v2 = (float) stack.pop();
+            switch ((String) term) {
+            case "+":
+                stack.push(v2 + v1);
+                break;
+            case "-":
+                stack.push(v2 - v1);
+                break;
+            case "*":
+                stack.push(v2 * v1);
+                break;
+            case "/":
+                stack.push(v2 / v1);
+                break;
+            }
+        }
+    }
+    return (float) stack.pop();
+}

@@ -1,0 +1,19 @@
+# Skipping code for storing sum of values from root to each node i in SUM[i]
+for i in nodes:
+    for j in nodes:
+        k = common_ancestor(i,j)
+        if ( SUM[i] + SUM[j] - SUM[k] == TARGET_SUM ):
+            print_path(i,k,j)
+
+=======================================================================================
+
+sub common_ancestor (i, j):
+  parent_i = parent(i)
+  # Go up the parent chain until parent's value is out of the range. 
+  # That's a red flag.
+  while( VAL[i] <= VAL[parent_i] <= VAL[j] ) : 
+    last_parent = parent_i
+    parent_i = parent(i)
+    if ( parent_i == NULL ): # root node
+      break
+return last_parent

@@ -1,0 +1,19 @@
+public class Singleton {
+  private static final Singleton instance;
+ 
+  static {
+    try {
+      instance = new Singleton();
+    } catch (IOException e) {
+      throw new RuntimeException("Darn, an error occurred!", e);
+    }
+  }
+ 
+  public static Singleton getInstance() {
+    return instance;
+  }
+ 
+  private Singleton() {
+    // ...
+  }
+}

@@ -1,0 +1,35 @@
+boolean mirrorEquals(BTree left, BTree right) {
+  if (left == null || right == null) return left == null && right == null;
+  return left.value == right.value && mirrorEquals(left.left, right.right) && mirrorEquals(left.right, right.left);
+}
+
+public static boolean isMirror(BTree root) {
+  List<BTree> thisRow, nextRow;
+  thisRow = Arrays.asList(root);
+  while (true) {
+    // Return false if this row is not a palindrome.
+    for (int i=0; i<thisRow.size()/2; i++) {
+      BTree x = thisRow.get(i);
+      BTree y = thisRow.get(thisRow.size()-i-1);
+      if ((x!=null) && (y!=null)
+          && (x.value != y.value))
+        return false;
+      if (((x==null) && (y!=null))
+          || (x!=null) && (y==null))
+        return false;
+    }
+    // Move on to the next row.
+    nextRow = new ArrayList<BTree>();
+    for (BTree tree : thisRow) {
+      nextRow.add((tree==null) ? null : tree.lt);
+      nextRow.add((tree==null) ? null : tree.rt);
+    }
+    boolean allNull = true;
+    for (BTree tree : nextRow) {
+      if (tree != null) allNull = false;
+    }
+    // If the row is all empty then we're done.
+    if (allNull) return true;
+    thisRow = nextRow;
+  }
+}

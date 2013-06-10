@@ -1,0 +1,122 @@
+/**
+ * Calculate infix to postfix
+ */
+public String calcInfixToPostfix(String eq){
+
+    char arr[] = eq.toCharArray() ; 
+    String val, x,y,z, w;
+    boolean answer = false, notEmpty = true;
+    Stack<String> operandStack = new Stack<String>();
+    Stack<String> operatorStack = new Stack<String>();
+
+    for(char c: arr){
+
+        val = Character.toString(c);        
+        answer = isOperator(val);
+
+        if(!answer/* is operand */){
+
+            operandStack.push(val);
+
+        }
+        else{
+
+                if(operatorStack.isEmpty()){
+
+                    operatorStack.push(val);
+                }
+                else{
+
+                    if( /* stack value */ (precedenceLevel(operatorStack.peek().charAt(0))) >= (precedenceLevel(c) /* input value */) ){
+
+                        do{
+
+                            x = operandStack.pop();
+                            y = operandStack.pop();
+                            z = operatorStack.pop();
+                            w = y+x+z;
+                            operandStack.push(w);   
+
+                            if(operatorStack.isEmpty() /* end loop if stack if empty */){                               
+                            break;
+                            }
+                            if(/* top of operator stack */ (precedenceLevel(operatorStack.peek().charAt(0))) <  (precedenceLevel(c) /* input value */) ){
+                            break;
+                            }
+
+                        } while(notEmpty);                      
+                    }
+
+                    operatorStack.push(val);
+                }
+        }
+    }
+
+    do{
+        x = operandStack.pop();
+        y = operandStack.pop();
+        z = operatorStack.pop();
+        w = y+x+z;
+        operandStack.push(w);
+
+        if(operatorStack.isEmpty() /* end loop if stack if empty */){                               
+        break;
+        }
+
+    }while(notEmpty);
+
+    String out = operandStack.pop();
+    return out;         
+}
+
+
+/**
+ * Determines if the value is an operator
+ * @param val
+ * @return boolean is operator or not
+ */
+public boolean isOperator(String val){
+
+    if(
+            (val.equals(String.valueOf(add))) || (val.equals(String.valueOf(sub))) ||
+            (val.equals(String.valueOf(mul))) || (val.equals(String.valueOf(div))) ||
+            (val.equals(String.valueOf(mod))) || (val.equals(String.valueOf(exp))) ||
+            (val.equals(String.valueOf(parL)))|| (val.equals(String.valueOf(parR)))
+       )
+    {           
+        return true;    
+    }
+    else{
+        return false;
+    }
+}
+
+/** 
+ * Calculates a value for each operator based on it's precedence
+ * ORDER OF OPERATION FOR INFIX
+ * Parentheses
+ * Exponentiation
+ * Multiplication, division and modulus
+ * Addition and subtraction
+ * @param op char the value being tested
+ * @return int return precedence level of operator
+ */
+public int precedenceLevel(char op) {
+    switch (op) {
+        case add:
+        case sub:
+            return 0;
+        case mul:
+        case div:
+        case mod:
+            return 1;
+        case exp:
+            return 2;
+        case parL:
+        case parR:
+            return 3;
+        default:
+            System.out.println("error! invalid operator");
+                break;
+    }
+}

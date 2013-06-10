@@ -1,0 +1,12 @@
+void inOrder (Node root)
+{
+ 
+  if(root == null) return;
+  
+  inOrder( root.leftNode() );
+  
+  root.printNodeValue();
+  
+  inOrder( root.rightNode() ); 
+  
+}

@@ -1,0 +1,27 @@
+ public boolean equals(Node<T> root1, Node<T> root2) {
+        boolean rootEqual = false;
+        boolean lEqual = false;
+        boolean rEqual = false;    
+
+        if (root1 != null && root2 != null) {
+            rootEqual = root1.getData().equals(root2.getData());
+
+            if (root1.getLeft()!=null && root2.getLeft() != null) {
+                // compare the left
+                lEqual = equals(root1.getLeft(), root2.getLeft());
+            }
+            else if (root1.getLeft() == null && root2.getLeft() == null) {
+                lEqual = true;
+            }
+            if (root1.getRight() != null && root2.getRight() != null) {
+                // compare the right
+                rEqual = equals(root1.getRight(), root2.getRight());
+            }
+            else if (root1.getRight() == null && root2.getRight() == null) {
+                rEqual = true;
+            }
+
+            return (rootEqual && lEqual && rEqual);
+        }
+        return false;
+    } 

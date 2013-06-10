@@ -1,0 +1,67 @@
+public class BinarytoHexa{
+	public String ConvertToHexa(String numS){
+		int a;
+		int ctr=0;
+		double prod=0;
+		int num;
+		int r;
+		String hex="\0";
+		for(int i=numS.length();i>0;i--){
+			a=Character.getNumericValue(numS.charAt(i-1));
+		prod=prod+(a*Math.pow(2,ctr));
+		ctr++;
+		}
+		num=(int)prod;
+		do{
+			r=num%16;
+			num=num/16;
+			if(r==10)
+				hex="A"+hex;
+			else if(r==11)
+				hex="B"+hex;
+			else if(r==12)
+				hex="C"+hex;
+			else if(r==13)
+				hex="D"+hex;
+			else if(r==14)
+				hex="E"+hex;
+			else if(r==15)
+				hex="F"+hex;
+			else
+				hex=r+hex;
+		}while(num!=0);
+		return hex;
+	}
+	public String ConvertToBinary(String numS){
+		int a;
+		int ctr=0;
+		double prod=0;
+		int num;
+		int r;
+		String bin="\0";
+		for(int i=numS.length();i>0;i--){
+			if(numS.charAt(i-1)=='a' ||numS.charAt(i-1)=='A')
+				a=10;
+			else if(numS.charAt(i-1)=='b' ||numS.charAt(i-1)=='B')
+				a=11;
+			else if(numS.charAt(i-1)=='c' ||numS.charAt(i-1)=='C')
+				a=12;
+			else if(numS.charAt(i-1)=='d' ||numS.charAt(i-1)=='D')
+				a=13;
+			else if(numS.charAt(i-1)=='e' ||numS.charAt(i-1)=='E')
+				a=14;
+			else if(numS.charAt(i-1)=='f' ||numS.charAt(i-1)=='F')
+				a=15;
+			else
+				a=Character.getNumericValue(numS.charAt(i-1));
+		prod=prod+(a*Math.pow(16,ctr));
+		ctr++;
+		}
+		num=(int)prod;
+		do{
+			r=num%2;
+			num=num/2;
+			bin=r+bin;
+		}while(num!=0);
+		return bin;
+	}

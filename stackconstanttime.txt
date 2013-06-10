@@ -1,0 +1,24 @@
+struct StackGetMin {
+  void push(int x) {
+    elements.push(x);
+    if (minStack.empty() || x <= minStack.top())
+      minStack.push(x);
+  }
+  bool pop() {
+    if (elements.empty()) return false;
+    if (elements.top() == minStack.top())
+      minStack.pop();
+    elements.pop();
+    return true;
+  }
+  bool getMin(int &min) {
+    if (minStack.empty()) {
+      return false;
+    } else {
+      min = minStack.top();
+      return true;
+    }
+  }
+  stack<int> elements;
+  stack<int> minStack;
+};

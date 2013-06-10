@@ -1,0 +1,24 @@
+import java.io.*;
+import java.lang.*;
+
+public class  BinaryToHexa{
+  public static void main(String[] args)throws IOException{
+  BufferedReader bf= new BufferedReader(new InputStreamReader(System.in));
+  System.out.println("Enter the Binary number:");
+  String hex = bf.readLine();
+  long num = Long.parseLong(hex);
+  long rem;
+  while(num > 0){
+  rem = num % 10;
+  num = num / 10;
+  if(rem != 0 && rem != 1){
+  System.out.println("This is not a binary number.");
+  System.out.println("Please try once again.");
+  System.exit(0);
+  }
+  }
+  int i= Integer.parseInt(hex,2);
+  String hexString = Integer.toHexString(i);
+  System.out.println("Hexa decimal: " + hexString);
+  }
+}

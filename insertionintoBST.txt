@@ -1,0 +1,61 @@
+private Node m_root;
+ 
+public void insert(int data) {
+    if (m_root == null) {
+        m_root = new TreeNode(data, null, null);
+        return;
+    }
+    Node root = m_root;
+    while (root != null) {
+        // Choose not add 'data' if already present (an implementation decision)
+        if (data == root.getData()) {
+            return;
+        } else if (data < root.getData()) {
+            // insert left
+            if (root.getLeft() == null) {
+                root.setLeft(new TreeNode(data, null, null));
+                return;
+            } else {
+                root = root.getLeft();
+            }
+        } else {
+            // insert right
+            if (root.getRight() == null) {
+                root.setRight(new TreeNode(data, null, null));
+                return;
+            } else {
+                root = root.getRight();
+            }
+        }
+    }
+}
+
+//Recursion
+private Node m_root;
+ 
+public void insert(int data){
+    if (m_root == null) {
+        m_root = new TreeNode(data, null, null);        
+    } else {
+        internalInsert(m_root, data);
+    }
+}
+ 
+private static void internalInsert(Node node, int data){
+    // Choose not add 'data' if already present (an implementation decision)
+    if (data == node.getKey()) {
+        return;
+    } else if (data < node.getKey()) {
+        if (node.getLeft() == null) {
+            node.setLeft(new TreeNode(data, null, null));
+        } else {
+            internalInsert(node.getLeft(), data);
+        }
+    } else {
+        if (node.getRight() == null) {
+            node.setRight(new TreeNode(data, null, null));
+        } else {
+            internalInsert(node.getRight(), data);
+        }       
+    }
+}

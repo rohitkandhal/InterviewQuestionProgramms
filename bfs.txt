@@ -1,0 +1,14 @@
+Queue<TreeNode> queue = new LinkedList<BinaryTree.TreeNode>() ;
+public void breadth(TreeNode root) {
+    if (root == null)
+        return;
+    queue.clear();
+    queue.add(root);
+    while(!queue.isEmpty()){
+        TreeNode node = queue.remove();
+        System.out.print(node.element + " ");
+        if(node.left != null) queue.add(node.left);
+        if(node.right != null) queue.add(node.right);
+    }
+
+}

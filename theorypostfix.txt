@@ -1,0 +1,7 @@
+Calculations occur as soon as an operator is specified. Thus, expressions are not entered wholesale from right to left but calculated one piece at a time, most efficiently from the center outwards.
+The automatic stack permits the automatic storage of intermediate results for use later: this key feature is what permitted RPN calculators to evaluate relatively complicated expressions.
+Brackets are unnecessary: the user enters calculations in the order that is required, letting the automatic stack store intermediate results on the fly for later use. Likewise, there is no requirement for the precedence rules required in infix notation.
+No equals key is required to force computation to occur.
+RPN calculators do, however, require an enter key to separate two adjacent numbers.
+Users must know the size of the stack, because practical implementations of RPN use different sizes for the stack. For example, the algebraic expression , if performed with a stack size of 4 and executed from left to right, might exhaust the stack.
+In the unlikely event of writing RPN on paper, adjacent numbers need a separator between them. Using a space requires clear handwriting to prevent confusion. For example, 12 34 + could look like 123 4 +, while something like 12, 34 + is straightforward.

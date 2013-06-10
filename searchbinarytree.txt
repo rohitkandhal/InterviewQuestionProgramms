@@ -1,0 +1,11 @@
+public boolean search(Object o, TreeNode root) {
+    if (root == null) {
+      return false;
+    }
+    if (root.element.equals(o)) {
+      return true;
+    }
+    else {
+      return search(o, root.left) || search(o, root.right);
+    }
+  }

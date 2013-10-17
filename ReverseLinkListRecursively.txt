@@ -1,3 +1,7 @@
+// 1. What is the reverse of null (the empty list)? null.
+// 2. What is the reverse of a one element list? the element.
+// 3. What is the reverse of an n element list? the reverse of the second element on followed by the first element.
+
 public ListNode Reverse(ListNode list)
 {
     if (list == null) return null; // first question
